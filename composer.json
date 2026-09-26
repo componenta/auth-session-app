@@ -1,0 +1,40 @@
+{
+    "name": "componenta/auth-session-app",
+    "description": "Current authentication-session parameter integration for Componenta DI",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^8.4",
+        "componenta/auth-session": "dev-main",
+        "componenta/di": "^5.0",
+        "psr/http-message": "^2.0"
+    },
+    "require-dev": {
+        "nyholm/psr7": "^1.8",
+        "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^12.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Componenta\\Auth\\Session\\App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Componenta\\Auth\\Session\\App\\Tests\\": "tests/"
+        }
+    },
+    "repositories": [
+        {"type": "vcs", "url": "https://github.com/componenta/auth.git"},
+        {"type": "vcs", "url": "https://github.com/componenta/auth-session.git"}
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {"branch-alias": {"dev-main": "1.0.x-dev"}},
+    "config": {"sort-packages": true},
+    "scripts": {
+        "test": "@php vendor/bin/phpunit --configuration phpunit.xml.dist",
+        "phpstan": "@php vendor/bin/phpstan analyse src --level=max",
+        "check": ["@phpstan", "@test"]
+    }
+}
